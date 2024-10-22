@@ -6,7 +6,7 @@ import pyautogui
 import pygame
 
 xSearch = 'XSmall.png'
-bottomBar = 'ThreeDots.png'
+bottomBar = 'BottomBar.png'
 threat_button = 'Breathing.png'
 no_threat_button = 'Spectrum.png'
 confidence_level = 0.7  # 70% match confidence
@@ -66,7 +66,7 @@ def initFactorio():
         
         time.sleep(1)
 
-    top = top + 30
+    top = top - 100
     width = 150
     height = 150
     search_region = (left, top, width, height)
@@ -94,7 +94,7 @@ def monitorFactorio():
     while True:
         try:
             # Search for the image on the screen
-            pyautogui.locateOnScreen(xSearch, region=search_region, confidence=confidence_level)
+            spot = pyautogui.locateOnScreen(xSearch, region=search_region, confidence=confidence_level) #region=search_region, 
 
             noThreatTime = -1
             if not dangerMode:
@@ -102,6 +102,7 @@ def monitorFactorio():
                 dangerMode = True
                 # print("Dangermode True")
                 click_on_background_window(hwnd, threat_click_position)  # Replace with your desired coordinates
+                pass
                 # print("Clicking on danger position")
             #print(f"Image found at: {location}")
             # Optional: Move the mouse to the center of the found image
