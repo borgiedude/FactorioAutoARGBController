@@ -126,6 +126,6 @@ def detect_key_combination():
 if __name__ == "__main__":
     pygame.mixer.init()         # Initialize the mixer module
     detect_key_combination()    # Start listening for ctrl+shift+r to reassign the x position
-    #initMasterPlus()           # Find and ready the coolermaster software for control
+    initMasterPlus()           # Find and ready the coolermaster software for control
     # update_danger_position()  # Look for the X for the first time, could do this by default, but could also only do it on command to be more performant.
     monitorFactorio()           # begin the main monitoring loop
