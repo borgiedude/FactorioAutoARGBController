@@ -11,7 +11,7 @@ from PIL import Image
 xSearch = 'XSmall.png'
 threat_button = 'Breathing.png'
 no_threat_button = 'Spectrum.png'
-confidence_level = 0.7  # 70% match confidence
+confidence_level = 0.5  # 50% match confidence
 search_region = None
 no_threat_click_position = None
 threat_click_position = None
@@ -98,11 +98,11 @@ def update_danger_position():
     search_region = None
     while not search_region:
         try:
-            search_region = pyautogui.locateOnScreen(xSearch, confidence=confidence_level)
+            search_region = pyautogui.locateOnScreen(xSearch, confidence=0.8)
 
             if search_region:
-                left = int(search_region.left)
-                top = int(search_region.top)
+                left = int(search_region.left) - 5
+                top = int(search_region.top) - 20
                 #pygame.mixer.music.play()
                 
         except pyautogui.ImageNotFoundException:
@@ -114,7 +114,7 @@ def update_danger_position():
     with Image.open(xSearch) as img:
         width, height = img.size
 
-    search_region = (left, top, width, height)
+    search_region = (left, top, width + 10, height + 25)
     pygame.mixer.music.load("trumpet.mp3")
     pygame.mixer.music.play()
 
